@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DUMMY_NEWS } from "../../../dummy-news";
+import { notFound } from "next/navigation";
 
 
 export default function NewsSinglePage(props: { params: { newsMainPage: string } }) {
@@ -7,7 +8,7 @@ export default function NewsSinglePage(props: { params: { newsMainPage: string }
     const newsItem = DUMMY_NEWS.find((news) => news.slug === newsSlug);
 
     if (!newsItem) {
-        return <h1 style={{ color: "red" }}>News Item Not Found!</h1>;
+        notFound()
     }
     return (
         <article className="news-article">
