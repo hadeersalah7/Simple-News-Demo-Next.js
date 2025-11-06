@@ -1,4 +1,4 @@
-interface DummyNewsItem {
+export interface DummyNewsItem {
     id: string;
     slug: string;
     title: string;

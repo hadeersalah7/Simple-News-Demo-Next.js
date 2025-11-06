@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import ActiveLink from './ActiveLink';
 
 interface HeaderPageProps {
     newsMainPage: string;
@@ -14,7 +15,10 @@ const HeaderPage = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/news">News</Link>
+                        <ActiveLink href="/news" title="News" />
+                    </li>
+                    <li>
+                        <ActiveLink href="/archive" title="Archive" />
                     </li>
                 </ul>
             </nav>
