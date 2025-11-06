@@ -2,6 +2,7 @@ import Link from "next/link";
 import NewsItem from "../../../../components/NewsItem";
 import { getAvailableNewsMonths, getAvailableNewsYears, getNewsForYear, getNewsForYearAndMonth } from "../../../../lib/news";
 import { DummyNewsItem } from "../../../../dummy-news";
+import { notFound } from "next/navigation";
 
 export default function ArchiveFilterYear({ params }: { params: { filter: string } }) {
     const filter = params.filter;
@@ -16,15 +17,17 @@ export default function ArchiveFilterYear({ params }: { params: { filter: string
         links = getAvailableNewsMonths(selectedYear);
     }
 
+    if (selectedYear && selectedMonth) {
+        news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+        links = [];
+    }
     if (news && news.length > 0) {
         newsContent = <NewsItem news={news} />
     }
 
-    if (selectedYear && selectedMonth) { 
-        news = getNewsForYearAndMonth(selectedYear, selectedMonth);
-        links = [];
-    }
-
+    // if ((selectedYear && !getAvailableNewsYears().includes(+selectedYear)) || (selectedMonth && !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))) { 
+    //     throw new Error("Un valid filter")
+    // }
     return (
         <>
             <header id="archive-header">
@@ -33,9 +36,9 @@ export default function ArchiveFilterYear({ params }: { params: { filter: string
                         {links.map((link) => {
                             const href = selectedYear ? `/archive/${selectedYear}/${link}` : `/archive/${link}`;
                             return (
-                            <li key={link}>
-                                <Link href={href}>{link}</Link>
-                            </li>  
+                                <li key={link}>
+                                    <Link href={href}>{link}</Link>
+                                </li>
                             )
                         })}
                     </ul>
