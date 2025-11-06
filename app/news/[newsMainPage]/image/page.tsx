@@ -8,8 +8,8 @@ export default function MainPageImage({ params }: { params: { newsMainPage: stri
         notFound()
     }
     return (
-        <div className="fullscreen-image">
-            <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
+        <div>
+            <img src={`/images/news/${newsItem.image}`} alt={newsItem.title}/>
         </div>
     )
 }
