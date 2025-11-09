@@ -1,5 +1,5 @@
-import NewsItem from "../../components/NewsItem";
-import { DUMMY_NEWS } from "../../dummy-news";
+import NewsItem from "../../../components/NewsItem";
+import { DUMMY_NEWS } from "../../../dummy-news";
 
 export default function NewsPage() {
     return (

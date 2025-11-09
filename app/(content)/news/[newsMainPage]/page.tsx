@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DUMMY_NEWS } from "../../../dummy-news";
+import { DUMMY_NEWS } from "../../../../dummy-news";
 
 
-export default function NewsSinglePage({params}: { params: { newsMainPage: string } }) {
+export default function NewsSinglePage({ params }: { params: { newsMainPage: string } }) {
     const newsSlug = params.newsMainPage;
     const newsItem = DUMMY_NEWS.find((news) => news.slug === newsSlug);
     console.log("newsItem", newsItem)
