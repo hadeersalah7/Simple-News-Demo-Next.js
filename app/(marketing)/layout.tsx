@@ -7,12 +7,8 @@ export const metadata = {
 
 
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function MarketingLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-          {children}
-      </body>
-    </html>
+    <main>{children}</main>
   );
 }

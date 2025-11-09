@@ -8,15 +8,11 @@ export const metadata = {
 
 
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function ContentLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <div id='page'>
-          <HeaderPage />
-          {children}
-        </div>
-      </body>
-    </html>
+    <div id='page'>
+      <HeaderPage />
+      {children}
+    </div>
   );
 }
