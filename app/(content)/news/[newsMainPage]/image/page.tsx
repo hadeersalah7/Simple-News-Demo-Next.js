@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { DUMMY_NEWS } from "../../../../dummy-news";
+import { DUMMY_NEWS } from "../../../../../dummy-news";
 
 export default function MainPageImage({ params }: { params: { newsMainPage: string } }) {
     const newsItemImage = params.newsMainPage;
@@ -9,7 +9,7 @@ export default function MainPageImage({ params }: { params: { newsMainPage: stri
     }
     return (
         <div>
-            <img src={`/images/news/${newsItem.image}`} alt={newsItem.title}/>
+            <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
         </div>
     )
 }

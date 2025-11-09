@@ -1,7 +1,7 @@
 import Link from "next/link";
-import NewsItem from "../../../../components/NewsItem";
-import { getAvailableNewsMonths, getAvailableNewsYears, getNewsForYear, getNewsForYearAndMonth } from "../../../../lib/news";
-import { DummyNewsItem } from "../../../../dummy-news";
+import NewsItem from "../../../../../components/NewsItem";
+import { getAvailableNewsMonths, getAvailableNewsYears, getNewsForYear, getNewsForYearAndMonth } from "../../../../../lib/news";
+import { DummyNewsItem } from "../../../../../dummy-news";
 import { notFound } from "next/navigation";
 
 export default function ArchiveFilterYear({ params }: { params: { filter: string } }) {
