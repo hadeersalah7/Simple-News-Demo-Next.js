@@ -1,5 +1,5 @@
 import './globals.css';
-
+import QueryProvider from './providers/QueryProvider';
 export const metadata = {
     title: 'Next.js Page Routing & Rendering',
     description: 'Learn how to route to different pages.',
@@ -8,7 +8,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <QueryProvider>
+                    {children}
+                </QueryProvider>
+            </body>
         </html>
     );
 }
