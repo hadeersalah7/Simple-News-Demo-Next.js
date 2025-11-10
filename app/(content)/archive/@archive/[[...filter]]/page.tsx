@@ -2,32 +2,32 @@ import Link from "next/link";
 import NewsItem from "../../../../../components/NewsItem";
 import { getAvailableNewsMonths, getAvailableNewsYears, getNewsForYear, getNewsForYearAndMonth } from "../../../../../lib/news";
 import { DummyNewsItem } from "../../../../../dummy-news";
-import { notFound } from "next/navigation";
 
-export default function ArchiveFilterYear({ params }: { params: { filter: string } }) {
+export default async function ArchiveFilterYear({ params }: { params: { filter: string } }) {
     const filter = params.filter;
     const selectedYear = filter?.[0]
     const selectedMonth = filter?.[1]
     let news: DummyNewsItem[]
-    let links = getAvailableNewsYears();
+    let links = await getAvailableNewsYears();
     let newsContent = <p>No News Found For The Selected Period</p>
 
     if (selectedYear && !selectedMonth) {
-        news = getNewsForYear(selectedYear)
+        news = await getNewsForYear(selectedYear)
         links = getAvailableNewsMonths(selectedYear);
     }
 
     if (selectedYear && selectedMonth) {
-        news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+        news = await getNewsForYearAndMonth(selectedYear, selectedMonth);
         links = [];
     }
     if (news && news.length > 0) {
         newsContent = <NewsItem news={news} />
     }
 
-    // if ((selectedYear && !getAvailableNewsYears().includes(+selectedYear)) || (selectedMonth && !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))) { 
-    //     throw new Error("Un valid filter")
-    // }
+    const availableYears = await getAvailableNewsYears()
+    if ((selectedYear && !availableYears.includes(selectedYear)) || (selectedMonth && !getAvailableNewsMonths(selectedYear).includes(selectedMonth))) { 
+        throw new Error("invalid filter")
+    }
     return (
         <>
             <header id="archive-header">
